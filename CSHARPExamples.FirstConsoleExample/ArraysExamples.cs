@@ -6,6 +6,37 @@ using System.Threading.Tasks;
 
 namespace CSHARPExamples.FirstConsoleExample {
     public class ArraysExamples {
+        public void Lab02() {
+            int[,] uniqueMatrix = GenerateUniqueMatrix(3, 3);
+            PrintMatrix(uniqueMatrix);
+        }
+
+        public void PrintMatrix(int[,] matrix) {
+            for (int row = 0; row < matrix.GetLength(0); row++) {
+                for (int col = 0; col < matrix.GetLength(1); col++) {
+                    Console.Write(matrix[row, col] + "  ");
+                }
+                Console.WriteLine();
+            }
+        }
+        public int[,] GenerateUniqueMatrix(int height, int width) {
+            Random randomGenerator = new Random();
+
+            int[,] matrix = new int[height, width];
+            bool[] extracted = new bool[width * height];
+
+            for (int row = 0; row < height; row++) {
+                for (int col = 0; col < width; col++) {
+                    int n;
+                    do {
+                        n = randomGenerator.Next(1, height * width + 1);
+                    } while (extracted[n - 1] == true);
+                    extracted[n - 1] = true;
+                    matrix[row, col] = n;
+                }
+            }
+            return matrix;
+        }
         public void Lab01() {
             /*
              Write a program that reads ten integer numbers from the console, then calculates the sum of these numbers. 
@@ -85,13 +116,6 @@ namespace CSHARPExamples.FirstConsoleExample {
             }
         }
 
-        internal void PrintMatrix(int[,] matrixToPrint) {
-            for (int r = 0; r < matrixToPrint.GetLength(0); r++) {
-                for (int c = 0; c < matrixToPrint.GetLength(1); c++) {
-                    Console.Write($"{matrixToPrint[r,c]}\t");
-                }
-                Console.WriteLine();
-            }
-        }
+        
     }
 }
