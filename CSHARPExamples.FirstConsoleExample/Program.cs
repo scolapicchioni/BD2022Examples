@@ -6,6 +6,62 @@ using ServiceA;
 class Program 
 {
     public static void Main() {
+        
+    }
+
+    private static void Examples08() {
+        MethodExamplesClass methodExamples = new MethodExamplesClass();
+        Console.WriteLine("this is main");
+        methodExamples.SomeMethodThatDoesStuff();
+        Console.WriteLine("this is main");
+        int resultOfThatMethod = methodExamples.SomeMethodThatReturnsStuff();
+        Console.WriteLine(resultOfThatMethod);
+
+        (int a, bool b, string c) = methodExamples.SomeMethodThatReturnsATuple();
+
+        (int age, bool hasChildren, string name) oneResult = methodExamples.SomeMethodThatReturnsATuple();
+
+        methodExamples.SomeMethodThatAcceptsAnInt(42);
+
+        methodExamples.SomeMethodThatAcceptsAnIntAndAStringAndABoolean(42, "hi", true);
+        //methodExamples.SomeMethodThatAcceptsAnIntAndAStringAndABoolean("hi", 42, true);
+
+        methodExamples.SomeMethodThatAcceptsAnIntAndAStringAndABoolean(
+            secondParameter: "hi",
+            firstParameter: 42,
+            thirdParameter: false);
+
+        //methodExamples.SomeMethodThatAcceptsOptionalParameters(,, false);
+        methodExamples.SomeMethodThatAcceptsOptionalParameters(42);
+        methodExamples.SomeMethodThatAcceptsOptionalParameters(42, "hi!");
+        methodExamples.SomeMethodThatAcceptsOptionalParameters(42, "hi", true);
+        methodExamples.SomeMethodThatAcceptsOptionalParameters(thirdParameter: true);
+
+        int argument; //= 5;
+        //Console.WriteLine($"argument is now {argument}");
+        //methodExamples.Increment(argument);
+        //Console.WriteLine($"argument is now {argument}");
+
+        //methodExamples.IncrementByRef(ref argument);
+        methodExamples.WriteOnOutArgument(out argument);
+        Console.WriteLine(argument);
+
+        int result; //= int.Parse("fghdjukg");
+
+        bool gelukt = int.TryParse("0", out result);
+
+        Console.WriteLine("the tryparse has now " + result);
+
+        methodExamples.SayHi();
+
+        methodExamples.SayHi("Simona");
+
+        methodExamples.SayHi(10);
+
+        //methodExamples.SomePrivateMethod();
+    }
+
+    private static void Example07() {
         MyClass my = new MyClass();
         my.MyMethod(42);
 
@@ -29,8 +85,8 @@ class Program
                 Console.WriteLine("ok. retry with something else.");
             } catch (Exception ex) {
                 Console.WriteLine($"BOOOOOOOOO {ex.GetType().Name} {ex.Message}!");
-            } finally { 
-                
+            } finally {
+
             }
         }
     }
