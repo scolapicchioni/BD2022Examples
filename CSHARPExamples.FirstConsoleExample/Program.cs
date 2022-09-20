@@ -1,12 +1,100 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Text;
 using CSHARPExamples.FirstConsoleExample;
-using ServiceA;
+using BankingSystem;
+using System.Drawing;
+
 class Program 
 {
     public static void Main() {
+        Bank rabo = new Bank();
+        BankAccount b1 = rabo.OpenAccount();
+        b1.Deposit(100);
+        Console.WriteLine(b1);
+
+        ////Singleton Pattern
+        //Settings anInstance = Settings.MakeASettingsObject();
+        //anInstance.BackgroudColor = new Color();
         
+    }
+
+    private static void Example12() {
+        //IDice,Dice
+        Console.WriteLine();
+        Dice dice = new Dice(20);
+        Player player1 = new Player(dice);
+        player1.Play();
+        Player player2 = new Player(dice);
+        player2.Play();
+    }
+
+    private static void Example11() {
+        Bank rabo = new Bank();
+
+        BankAccount b1 = rabo.OpenAccount();
+        BankAccount b2 = rabo.OpenAccount();
+        rabo.OpenAccount();
+        rabo.OpenAccount();
+        rabo.OpenAccount();
+
+
+        b1.Deposit(234);
+        b2.Deposit(355);
+
+
+        for (int i = 0; i < rabo.Count; i++) {
+            Console.WriteLine($"The account {rabo[i].Id} has a balance of {rabo[i].Balance}");
+        }
+    }
+    private static void Example10() {
+        //FileStream fs;
+        //try {
+        //    fs = null;
+        //} finally {
+        //    fs.Dispose();
+        //}
+        //using (FileStream fs = new FileStream()) 
+        //{
+        //    using (FileStream variable2 = new FileStream(fs)) {
+
+
+        //    } //Dispose()
+        //} //Dispose()
+
+        //using FileStream fs = new FileStream();
+
+        //new FileStream()
+        Product p = new Product(5);
+
+        var (a, b, c, d, e) = p;
+
+        Customer customer = new Customer() {
+            Name = "Hi",
+            HouseAddress = new Address() {
+                StreetName = "Waterkers",
+                City = "Gouda"
+            }
+        };
+        //customer.Name = "hi";
+        //customer.HouseAddress.StreetName = "Waterkers";
+    }
+
+    private static void Examples09() {
+        Product product1 = new Product(5);
+
+        product1.Name = "dfhskjudhcfks";
+        Console.WriteLine(product1.Name);
+
+        product1.Price = 123.45M;
+
+        Console.WriteLine(product1.Price);
+
+        decimal priceWithBTW = product1.PriceWithVat();
+
+        Product product2 = new Product(2);
+        product2.Price = 678.90M;
+        Console.WriteLine(product2.Price);
+        priceWithBTW = product2.PriceWithVat();
     }
 
     private static void Examples08() {
@@ -144,48 +232,48 @@ class Program
         Console.WriteLine("HI");
     }
 
-    private static void Example05() {
-        /*
-         * 5.	Now create two accounts in the main method, 
-         * one with a Checkings type and  one with a Savings type.
-         */
+    //private static void Example05() {
+    //    /*
+    //     * 5.	Now create two accounts in the main method, 
+    //     * one with a Checkings type and  one with a Savings type.
+    //     */
 
-        BankAccount checkingsAccount;
-        checkingsAccount.Balance = 0;
-        checkingsAccount.AccountType = AccountType.Checkings;
+    //    BankAccount checkingsAccount;
+    //    checkingsAccount.Balance = 0;
+    //    checkingsAccount.AccountType = AccountType.Checkings;
 
-        BankAccount savingsAccount;
-        savingsAccount.Balance = 0;
-        savingsAccount.AccountType = AccountType.Savings;
+    //    BankAccount savingsAccount;
+    //    savingsAccount.Balance = 0;
+    //    savingsAccount.AccountType = AccountType.Savings;
 
-        /* 6.	Let the user input the account number in the console window 
-        for the new accounts by using the Console.ReadLine method. */
-        Console.Write("Please, insert the account number for the Checkings Account: ");
-        checkingsAccount.AccountNumber = Console.ReadLine();
+    //    /* 6.	Let the user input the account number in the console window 
+    //    for the new accounts by using the Console.ReadLine method. */
+    //    Console.Write("Please, insert the account number for the Checkings Account: ");
+    //    checkingsAccount.AccountNumber = Console.ReadLine();
 
-        Console.Write("Please, insert the account number for the Savings Account: ");
-        savingsAccount.AccountNumber = Console.ReadLine();
-        // 7.	Use string interpolation to print the field values of the two accounts
+    //    Console.Write("Please, insert the account number for the Savings Account: ");
+    //    savingsAccount.AccountNumber = Console.ReadLine();
+    //    // 7.	Use string interpolation to print the field values of the two accounts
 
-        Console.WriteLine($"The {checkingsAccount.AccountType} has an Id of {checkingsAccount.AccountNumber} and a balance of {checkingsAccount.Balance}");
-        Console.WriteLine($"The {savingsAccount.AccountType} has an Id of {savingsAccount.AccountNumber} and a balance of {savingsAccount.Balance}");
+    //    Console.WriteLine($"The {checkingsAccount.AccountType} has an Id of {checkingsAccount.AccountNumber} and a balance of {checkingsAccount.Balance}");
+    //    Console.WriteLine($"The {savingsAccount.AccountType} has an Id of {savingsAccount.AccountNumber} and a balance of {savingsAccount.Balance}");
 
 
-        //int age = int.Parse(Console.ReadLine());
-        //age.ToString()
+    //    //int age = int.Parse(Console.ReadLine());
+    //    //age.ToString()
 
-        long resultOfMyFirstLibrary = long.MaxValue;
+    //    long resultOfMyFirstLibrary = long.MaxValue;
 
-        int inputOfTheSecondLibrary = (int)resultOfMyFirstLibrary;
+    //    int inputOfTheSecondLibrary = (int)resultOfMyFirstLibrary;
 
-        string s = "5";
-        //inputOfTheSecondLibrary = (int)s;
+    //    string s = "5";
+    //    //inputOfTheSecondLibrary = (int)s;
 
-        resultOfMyFirstLibrary = inputOfTheSecondLibrary;
+    //    resultOfMyFirstLibrary = inputOfTheSecondLibrary;
 
-        (double price, string name, bool inStock) myProduct = (price: 123, name: "Dell stuff", inStock: true);
+    //    (double price, string name, bool inStock) myProduct = (price: 123, name: "Dell stuff", inStock: true);
 
-    }
+    //}
 }
 
 
