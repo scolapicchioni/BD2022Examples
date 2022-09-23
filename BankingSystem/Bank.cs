@@ -4,7 +4,7 @@ public class Bank {
     public int Count { get; private set; }
 
     public BankAccount OpenAccount() {
-        BankAccount account = new BankAccount() { Id = Count + 1 };
+        BankAccount account = new BankAccount(); // { Id = Count + 1 };
         account.AccountNumber = "RABO" + account.Id;
         accounts[Count] = account;
         Count++;
